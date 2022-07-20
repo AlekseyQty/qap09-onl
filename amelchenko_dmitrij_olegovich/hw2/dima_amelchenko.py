@@ -1,1 +1,0 @@
-print("Dima Amelcenko" "qap09-onl")
