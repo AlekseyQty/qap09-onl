@@ -23,4 +23,15 @@ name = 'Ivanou Ivan'
 first_name = name[name.find(' ')+1:]
 last_name = name[:name.find(' ')+1]
 
-print('task_2: ' + first_name + ' ' + last_name)
+print('task_3: ' + first_name + ' ' + last_name)
+
+# 4. Напишите программу которая удаляет пробел в начале, в конце строки
+
+origin_str = '_The_world_under_spam_attack_'
+
+#  "Space" mark as "_" for visibility
+
+first_space = origin_str.find('_')
+last_space = origin_str.rfind('_')
+
+print('task_4: ' + origin_str[first_space+1:last_space])
