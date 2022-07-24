@@ -1,21 +1,21 @@
 # 1.	Заменить символ “#” на символ “/” в строке 'www.my_site.com#about'
 
-String_1 = "www.my_site.com#about"
-print(String_1.replace("#", "/"))
+case_1 = "www.my_site.com#about"
+print(case_1.replace("#", "/"))
 
 
 # 2.	Напишите программу, которая добавляет ‘ing’ к словам
 
-String_2 = "Push"
-print(f"{String_2}ing")
+case_2 = "Push"
+print(f"{case_2}ing")
 
 # 3.	В строке “Ivanou Ivan” поменяйте местами слова => "Ivan Ivanou"
 
-String_3 = "Ivan Ivanou"
-print(" ".join(String_3.split()[::-1]))
+case_3 = "Ivan Ivanou"
+print(" ".join(case_3.split()[::-1]))
 
 # 4.	Напишите программу которая удаляет пробел в начале, в конце строки
 
-String_4 = " London is the capital of Great Britain. "
-print(String_4.strip())
+case_4 = " London is the capital of Great Britain. "
+print(case_4.strip())
 
