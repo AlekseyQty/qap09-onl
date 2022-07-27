@@ -90,3 +90,18 @@ print('Task_5: ')
 print("True answer: {'a': [1, None], 'b': [2, None], 'c': [3, 3], 'd': [None, 4], 'e': [None, 5]}")
 print(f"My answer:  {a_b}")
 
+print(f'{"-"*20} TASK *1 {"-"*20}')
+
+"""
+*1) Вам передан массив чисел. Известно, что каждое число в этом массиве имеет
+пару, кроме одного: [1, 5, 2, 9, 2, 9, 1] => 5
+Напишите программу, которая будет выводить уникальное число
+"""
+array_start = [1, 5, 2, 9, 2, 9, 1]
+array_copy = array_start[:]
+array_copy.sort()
+
+for i in range(len(array_copy)):
+    amount = array_copy.count(array_copy[i])
+    if amount == 1:
+        print(f'Task*1: {array_copy[i]}')
