@@ -1,8 +1,7 @@
 import collections
-import operator
+from operator import itemgetter
 
 # 1. Перевести строку в массив
-from operator import itemgetter
 
 text_1 = "Robin Singh"
 text_2 = "I love arrays they are my favorite"
