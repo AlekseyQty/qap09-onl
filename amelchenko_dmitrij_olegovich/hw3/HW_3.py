@@ -13,10 +13,10 @@ print(wd_1+add_ing, wd_2+add_ing)
 
 #3.В строке “Ivanou Ivan” поменяйте местами слова => "Ivan Ivanou"
 
-last_name = 'Ivanou'
-first_name = 'Ivan'
+full_name = "Ivanou Ivan"
 
-print(f'{first_name} {last_name}')
+print(" ".join(full_name.split()[::-1]))
+
 
 #4. Напишите программу которая удаляет пробел в начале, в конце строки
 
