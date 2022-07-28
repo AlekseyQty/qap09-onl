@@ -98,10 +98,9 @@ print(f'{"-"*20} TASK *1 {"-"*20}')
 Напишите программу, которая будет выводить уникальное число
 """
 array_start = [1, 5, 2, 9, 2, 9, 1]
-array_copy = array_start[:]
-array_copy.sort()
 
-for i in range(len(array_copy)):
-    amount = array_copy.count(array_copy[i])
+
+for i in range(len(array_start)):
+    amount = array_start.count(array_start[i])
     if amount == 1:
-        print(f'Task*1: {array_copy[i]}')
+        print(f'Task*1: {array_start[i]}')
