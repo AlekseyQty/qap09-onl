@@ -60,6 +60,19 @@ del split_4[0]
 print("Exercise_4:", split_4)
 del split_4[-1]
 print("Exercise_4:", split_4)
+str_4_new = str(split_4)
+print(type(str_4_new), str_4_new)
+
+
+# Exercise_4. Option_2. Напишите программу, которая удаляет пробел в начале и конце строки.
+
+print(("-"*25) + "Exercise_4. Option_2" + ("-"*25))
+
+str_4_2 = " Exercise 4 "
+print(len(str_4_2))
+print(str_4.startswith(" "))
+print(str_4.endswith(" "))
+print(str_4_2[1:11])
 
 
 
