@@ -5,20 +5,31 @@
 # Если в тексте две и больше буквы с одинаковой частотой, тогда результатом будет буква, которая идет первой в алфавите.
 # Для примера, "one" содержит "o", "n", "e" по одному разу, так что мы выбираем "e".
 
-string = "Hhhhhello World! One Ops AAaa + 900 * 5"
+string = "Hello Wwwwworld! One Ops AAaaa + 900 * 555555555"
 string_d = string.lower()
 string_dif = string_d.replace(" ", "")
 print(string_dif)
+
 unique = {}
+
 for i in string_dif:
-    if i in unique:
-        unique[i] += 1
-    else:
-        unique[i] = 1
+    if i.isalpha():
+        if i in unique:
+            unique[i] += 1
+        else:
+            unique[i] = 1
 max_value = max(unique.values())
-for key in unique:
-    if unique[key] == max_value:
-        print(f"Most repeated character: {key}-{unique[key]}")
+key = unique.keys()
+unique_l = {}
+for k in sorted(unique.keys()):
+    if unique[k] == max_value:
+        if k not in unique_l:
+            unique_l[k] = max_value
+
+result_1 = list(unique_l.keys())
+result_2 = list(unique_l.values())
+
+print(f"Most repeated character: {result_1[0]} - {result_2[0]}")
 
 
 
