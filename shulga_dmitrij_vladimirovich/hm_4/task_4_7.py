@@ -17,8 +17,9 @@ for i in string_dif:
         unique[i] = 1
 max_value = max(unique.values())
 for key in unique:
-  if unique[key] == max_value:
-      print(f"Most repeated character: {key}-{unique[key]}")
+    if unique[key] == max_value:
+        print(f"Most repeated character: {key}-{unique[key]}")
+
 
 
 
