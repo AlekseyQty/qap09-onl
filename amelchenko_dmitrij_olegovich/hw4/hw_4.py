@@ -41,13 +41,12 @@ print('Task 4: ',list_task_4)
 
 a = { 'a': 1, 'b': 2, 'c': 3}
 b = { 'c': 3, 'd': 4,'e': 5}
-uni_dict = list(a.keys()) + list(b.keys())
 
-sotr_dict = sorted(list(set(app_dict)))
+sotr_dict = sorted(list(set(list(a.keys()) + list(b.keys()))))
 
-y = {}
+uni_keys = {}
 
 for key in sotr_dict:
-    y[key] = [a.get(key), b.get(key)]
+    uni_keys[key] = [a.get(key), b.get(key)]
 
-print('Task 5: ',y)
+print('Task 5: ',uni_keys)
