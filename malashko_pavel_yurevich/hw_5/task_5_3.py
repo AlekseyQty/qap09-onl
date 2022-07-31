@@ -23,12 +23,12 @@ while True:
     user_number_list = [user_number//1000, user_number//100 - user_number//1000*10,
                         user_number//10 - user_number//100*10, user_number % 10]
 
-    # Для подсчёта "коров" используем операцию пересечения для двух верхних множеств (A&B) и подсчитываем количество
-    # угаданных цифр
-    print(f"{len(set(system_number_list) & set(user_number_list))} Коровы и {counter} бык")
-
     if user_number == number:
         print("Вы выйграли! :)")
         break
     else:
+        # Для подсчёта "коров" используем операцию пересечения для двух верхних множеств (A&B) и подсчитываем количество
+        # угаданных цифр
+        print(f"{len(set(system_number_list) & set(user_number_list)) - counter} Коровы и {counter} бык")
         print("Не верно, попробуйте еще раз.")
+
