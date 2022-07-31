@@ -16,8 +16,10 @@ for i in range(1,101):
         print('Fuzz')
     elif i % 5 == 0:
         print('Buzz')
-    elif i % 3 == 0 or i % 5 == 0:
+    elif i % 3 == 0 and i % 5 == 0:
         print('FuzzBuzz')
-    else: 
+    else:
+        i % 3 != 0 and i % 5 != 0
         print(i)
 
+#3.Быки и коровы
