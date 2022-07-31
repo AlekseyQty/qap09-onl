@@ -15,5 +15,4 @@ print(result)
 
 #Напишите программу которая удаляет пробел в начале, в конце строки
 name = ' My name is Boris '
-name.strip()
 print(name.strip())
