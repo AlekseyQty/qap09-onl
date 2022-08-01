@@ -10,9 +10,11 @@ the_ending = "ing"
 print(word1 + the_ending, word2 + the_ending, word3 + the_ending)
 
 # 3.В строке «Иванов Иван» поменяйте местами слова => «Иван Иванов»
-name = "Ivan"
-last_name = "Ivanov"
-print(f"My name is {name} {last_name}")
+full_name = ("Ivanov Ivan")
+full_name = full_name.split(" ")
+full_name = full_name[::-1]
+full_name = " ".join(full_name)
+print(full_name)
 
 #4.Напишите программу, которая удаляет пробел в начале, в конце строки
 first_string = " This my first strings "
