@@ -10,6 +10,7 @@ the_ending = "ing"
 print(word1 + the_ending, word2 + the_ending, word3 + the_ending)
 
 # 3.В строке «Иванов Иван» поменяйте местами слова => «Иван Иванов»
+#исправил
 full_name = ("Ivanov Ivan")
 full_name = full_name.split(" ")
 full_name = full_name[::-1]
