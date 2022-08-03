@@ -22,51 +22,54 @@ while my_number != "quit":
     if my_number == number:
         print("Вы выиграли!")
         break
+    if my_number == "quit":
+        print("Goodbye")
     else:
         count_2 = 0
+        count_3 = None
+        index = None
+        bulls = []
         for i in range(len(number)):
             if number[i] == my_number[i]:
                 count_2 += 1
-                index = my_number[i]
+                bulls.append(str(my_number[i]))
             if count_2 == 1:
                 count_3 = "Один бык"
                 continue
-            if count_2 == 2:
+            elif count_2 == 2:
                 count_3 = "Два быка"
                 continue
-            if count_2 == 3:
+            elif count_2 == 3:
                 count_3 = "Три быка"
                 continue
-            if count_2 == 2:
-                count_3 = "Четыри быка"
-                continue
             else:
-                count_3 = None
-                index = None
+                count_3 = ""
+                index = ""
 
         count = 0
+        count_1 = None
         for j in number:
             if j in my_number:
-                if j == index:
+                if j in bulls:
                     count_1 = ""
                 else:
                     count += 1
             if count == 1:
                 count_1 = "Одна корова"
                 continue
-            if count == 2:
+            elif count == 2:
                 count_1 = "Две коровы"
                 continue
-            if count == 3:
+            elif count == 3:
                 count_1 = "Три коровы"
                 continue
-            if count == 4:
+            elif count == 4:
                 count_1 = "Четыри коровы"
                 continue
             else:
-                count_1 = None
+                count_1 = ""
 
-        if count_1 == count_3 == None:
+        if count_1 == count_3 == "":
             print("Try again")
         else:
             print(f"{count_1} {count_3}")
