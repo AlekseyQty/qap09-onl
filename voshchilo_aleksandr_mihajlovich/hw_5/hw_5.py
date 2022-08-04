@@ -1,17 +1,16 @@
-import math
 import random
 # 1. Написать программу, которая считает факториал произвольного числа. Не
 # использовать метод для расчета факториала из стандартной библитоеки.
 
-number_ran = 5
+number_ran = 6
 list_number = []
-
 for i in range(1, number_ran+1):
     list_number.append(i)
+numb_fact = 1
+for i in list_number:
+    numb_fact *= i
 
-# print(list_number)
-number_f = math.prod(list_number)
-print(f"Факториал числа {number_ran} равен {number_f}")
+print(f"Факториал числа {number_ran} равен {numb_fact}")
 
 
 # 2. BuzzFuzz
@@ -44,76 +43,38 @@ for i in range(1 , 101):
 # Ваша задача реализовать программу, против которой можно сыграть в "Быки и коровы"
 
 
-list_b = []
-while len(set(list_b)) < 4:
-    list_b.append(random.randint(0, 9))
+pc_rand = []
+while len(set(pc_rand)) < 4:
+    pc_rand.append(random.randint(0, 9))
 else:
     print("Случайное число загадано")
 
-list_b_numb = list(map(int, set(list_b)))  # случайное число
-print(list_b_numb)
+pc_rand_numb = list(map(int, set(pc_rand)))  # случайное число
 
 result_list = ["Бык"]
 
 while result_list.count("Бык") < 4:
-    a = "1"
-    while len(set(list(map(int, a)))) < 4:  # проверка числа на повтор
-        a = str(input("Введите четырехзначное число без повторов: "))
+    user_choice = str(input("Введите четырехзначное число без повторов: "))
+    while len(set(list(map(int, user_choice)))) != 4:  # проверка числа на повтор
+        user_choice = str(input("Введите четырехзначное число без повторов: "))
     else:
         print(" ")
 
-    list_a_numb = list(map(int, a))  # число пользователя
-    # print(list_a_numb)
+    list_user_choice = list(map(int, user_choice))  # число пользователя
 
     result_list = []
 
-    for i in list_a_numb:
-        for j in list_b_numb:
+    for i in list_user_choice:
+        for j in pc_rand_numb:
             if i == j:
-                if list_a_numb.index(i) == list_b_numb.index(j):
+                if list_user_choice.index(i) == pc_rand_numb.index(j):
                     result_list.append("Бык")
                 else:
                     result_list.append("Корова")
             else:
                 continue
 
-    # print(result_list)
-
-    if result_list.count("Корова") >= 1:
-        if result_list.count("Бык") == 1:
-            print("Один бык,", end="")
-        elif result_list.count("Бык") == 2:
-            print("Два быка,", end="")
-        elif result_list.count("Бык") == 3:
-            print("Три быка,", end="")
-
-    if result_list.count("Корова") < 1:
-        if result_list.count("Бык") == 1:
-            print("Один бык")
-        elif result_list.count("Бык") == 2:
-            print("Два быка")
-        elif result_list.count("Бык") == 3:
-            print("Три быка")
-
-    if result_list.count("Бык") >= 1:
-        if result_list.count("Корова") == 1:
-            print(" одна корова")
-        elif result_list.count("Корова") == 2:
-            print(" две коровы")
-        elif result_list.count("Корова") == 3:
-            print(" три коровы")
-        elif result_list.count("Корова") == 4:
-            print(" четыре коровы")
-
-    if result_list.count("Бык") < 1:
-        if result_list.count("Корова") == 1:
-            print("Одна корова")
-        elif result_list.count("Корова") == 2:
-            print("Две коровы")
-        elif result_list.count("Корова") == 3:
-            print("Три коровы")
-        elif result_list.count("Корова") == 4:
-            print("Четыре коровы")
+    print(f"{result_list.count('Корова')} коров(а/ы) {result_list.count('Бык')} бык(а)")
 else:
     print("Вы выйграли!")
 
