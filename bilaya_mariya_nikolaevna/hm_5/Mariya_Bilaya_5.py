@@ -3,7 +3,7 @@
 
 print(("-" * 25) + "Likes" + ("-" * 25))
 
-likes = ["Alex", "Mark", "Vitaliy", "Valeria"]
+likes = ["Alex", "Mark"]
 x = len(likes)
 print("len of likes:", x)
 if x == 0:
