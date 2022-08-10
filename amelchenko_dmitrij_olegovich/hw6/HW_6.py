@@ -41,7 +41,7 @@ def divi_num(x, y):
 
 
 while True:
-    fun_num = input('1. Сложение \n2. Вычитание \n3. Умножение \n4. Деление \nВведите номер пункта меню: ')
+    fun_num = input('////////////// \n1. Сложение \n2. Вычитание \n3. Умножение \n4. Деление \nВведите номер пункта меню: ')
 
     if fun_num == '':
         fun_num
@@ -52,36 +52,37 @@ while True:
     elif int(fun_num) == 1:
         x = input('Введите первое число: ')
         y = input('Введите второе число: ')
-        sum_num = sum_num(x, y)
-        print(f'Ответ: {sum_num}')
-        break
+        sum_num(x, y)
+        print(f'////////////// \nОтвет: {sum_num(x, y)}')
+        fun_num
 
     elif int(fun_num) == 2:
         x = input('Введите первое число: ')
         y = input('Введите второе число: ')
-        calc_num = calc_num(x, y)
-        print(f'Ответ: {calc_num}')
-        break
+        calc_num(x, y)
+        print(f'////////////// \nОтвет: {calc_num(x, y)}')
+        fun_num
 
     elif int(fun_num) == 3:
         x = input('Введите первое число: ')
         y = input('Введите второе число: ')
-        multip_num = multip_num(x, y)
-        print(f'Ответ: {multip_num}')
-        break
+        multip_num(x, y)
+        print(f'////////////// \nОтвет: {multip_num(x, y)}')
+        fun_num
 
     elif int(fun_num) == 4:
         x = input('Введите первое число: ')
         y = input('Введите второе число: ')
 
-        if (x, y) == 0:
-            print(f'Деление на 0 невозможно!')
+        if float(y) == 0:
+            print(f'////////////// \nДеление на 0 невозможно!')
             fun_num
 
     else:
         if int(fun_num) == 4:
             x = input('Введите первое число: ')
             y = input('Введите второе число: ')
-            divi_num = divi_num(x, y)
-            print(f'Ответ: {divi_num}')
-            break
+            divi_num1 = divi_num(x, y)
+            float_divi_num1 = int(divi_num1) - divi_num1
+            print(f'////////////// \nЧастно: {int(divi_num1)}, Остаток: {float_divi_num1}')
+            fun_num
