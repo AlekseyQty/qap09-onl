@@ -1,13 +1,8 @@
 # Напишите функцию, которая принимает на вход одномерный массив и два числа - размеры выходной матрицы.
 # На выход программа должна подавать матрицу нужного размера, сконструированную из элементов массива.
 
-import numpy as np
+#import numpy as np
 from random import randint
-
-my_list = []
-for i in range(8):
-    my_list.append(randint(0, 10))
-print(f"Исходный массив: {my_list}")
 
 number_1 = ""
 number_2 = ""
@@ -23,9 +18,35 @@ while number_1 != "quit" or number_2 != "quit":
     else:
         number_line = int(number_1)
         number_column = int(number_2)
+        my_list = []
+        for i in range(number_line * number_column):
+            my_list.append(randint(0, 10))
+        print(f"Исходный массив: {my_list}")
 
-        def changed_matrix(number_line, number_column):
-            new_list = np.reshape(my_list, (number_line, number_column))
-            print("Новые массивы:" '\n' f"{new_list}")
+        # def changed_matrix(number_line, number_column):
+        #     new_list = np.reshape(my_list, (number_line, number_column))
+        #     print("Новые массивы:" '\n' f"{new_list}")
+        #
+        # changed_matrix(number_line, number_column)
 
-        changed_matrix(number_line, number_column)
+        def my_decorator(func):
+
+            def wrapper(new_list):
+                print("[")
+                func(new_list)
+                print("]")
+
+            return wrapper
+
+        @my_decorator
+        def changed_matrix(number_line):
+            new_list = []
+            for i in range(0, len(my_list), number_line):
+                new_list.append(my_list[i:i+number_line])
+
+            #print("[")
+            for j in range(0, len(new_list)):
+                print(f"  {new_list[j]}")
+            #print("]")
+
+        changed_matrix(number_line)
