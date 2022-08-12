@@ -61,11 +61,17 @@ print(list_4_copy)
 
 print(("-" * 25) + "Exercise_5" + ("-" * 25))
 
-a = { 'a': 1, 'b': 2, 'c': 3}
-b = { 'c': 3, 'd': 4,'e': 5}
+a = {"a": 1, "b": 2, "c": 3}
+b = {"c": 3, "d": 4, "e": 5}
+dict_ab = {**a, **b}
+print(dict_ab)
+for k in dict_ab.keys():
+    dict_ab[k] = [a.get(k), b.get(k)]
+print(dict_ab)
 
-for k, v in b.items():
-    print(k, v)
+
+
+
 
 
 
