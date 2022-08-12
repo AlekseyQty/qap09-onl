@@ -3,7 +3,8 @@
 
 print(("-" * 25) + "Likes" + ("-" * 25))
 
-likes = ["Alex", "Mark"]
+likes = ["Alex", "Mark", "Anna", "Pete", "Max", "Mary", "Vitaliy", "Alex",
+         "Mark", "Anna", "Pete", "Max", "Mary", "Vitaliy"]
 x = len(likes)
 print("len of likes:", x)
 if x == 0:
@@ -15,7 +16,7 @@ elif x == 2:
 elif x == 3:
     print(f"{likes[x-3]}, {likes[x-2]} and {likes[x-1]} like this")
 elif x > 3:
-    print(f"{likes[0]}, {likes[1]} and 2 others like this")
+    print(f"{likes[0]}, {likes[1]} and {x-2} others like this")
 
 
 # Напишите программу, которая перебирает последовательность от 1 до 100. Для чисел кратных 3
