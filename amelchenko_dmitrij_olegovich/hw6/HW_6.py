@@ -54,21 +54,21 @@ while True:
         y = input('Введите второе число: ')
         sum_num(x, y)
         print(f'////////////// \nОтвет: {sum_num(x, y)}')
-        fun_num
+
 
     elif int(fun_num) == 2:
         x = input('Введите первое число: ')
         y = input('Введите второе число: ')
         calc_num(x, y)
         print(f'////////////// \nОтвет: {calc_num(x, y)}')
-        fun_num
+
 
     elif int(fun_num) == 3:
         x = input('Введите первое число: ')
         y = input('Введите второе число: ')
         multip_num(x, y)
         print(f'////////////// \nОтвет: {multip_num(x, y)}')
-        fun_num
+
 
     elif int(fun_num) == 4:
         x = input('Введите первое число: ')
@@ -76,13 +76,10 @@ while True:
 
         if float(y) == 0:
             print(f'////////////// \nДеление на 0 невозможно!')
-            fun_num
 
-    else:
-        if int(fun_num) == 4:
-            x = input('Введите первое число: ')
-            y = input('Введите второе число: ')
-            divi_num1 = divi_num(x, y)
-            float_divi_num1 = int(divi_num1) - divi_num1
-            print(f'////////////// \nЧастно: {int(divi_num1)}, Остаток: {float_divi_num1}')
-            fun_num
+
+        else:
+            if float(y) != 0:
+                divi_num(x, y)
+                print(f'////////////// \nОтвет: {divi_num(x, y)}')
+
