@@ -6,8 +6,6 @@ def typed(type):
 
         def wrapper(*args):
 
-            # typed_a = type(typed_a)
-            # typed_b = type(typed_b)
             new_arg = []
             for arg in args:
                 arg = type(arg)
