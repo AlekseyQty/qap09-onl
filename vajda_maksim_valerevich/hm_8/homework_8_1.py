@@ -18,17 +18,17 @@ def print_task(task_no):
 
 def typed(type):
     def decorator(func):
-        def wrapper(arg1, arg2):
-            if type == 'str':
-                arg1 = str(arg1)
-                arg2 = str(arg2)
-                func(arg1, arg2)
-            elif type == 'int':
-                arg1 = int(arg1)
-                arg2 = int(arg2)
-                func(arg1, arg2)
-            else:
-                print('I dont know')
+
+        def wrapper(*args):
+            new_arg = []
+            for arg in args:
+                if isinstance(arg, float):
+                    new_arg.append(arg)
+                else:
+                    arg = type(arg)
+                    new_arg.append(arg)
+
+            func(*new_arg)
 
         return wrapper
 
@@ -36,7 +36,7 @@ def typed(type):
 
 
 @print_task('FIRST')
-@typed(type='str')
+@typed(type=str)
 def add_two_symbols(a, b):
     print(a + b)
 
@@ -45,18 +45,13 @@ add_two_symbols("3", 5)  # -> "35"
 add_two_symbols(5, 5)  # -> "55"
 add_two_symbols('a', 'b')  # -> 'ab’
 
-""" 
-Не смог сделать универсальный декоратор, для разного кол-ва аргументов.
-Нужен совет.
-"""
+
+@print_task('FIRST')
+@typed(type=int)
+def add_three_symbols(a, b, c):
+    print(a + b + c)
 
 
-# @print_task('ONE')
-# @typed(type='int')
-# def add_three_symbols(a, b, c):
-#     print(a + b + c)
-#
-#
-# add_three_symbols(5, 6, 7)  # -> 18
-# add_three_symbols("3", 5, 0)  # -> 8
-# add_three_symbols(0.1, 0.2, 0.4)  # -> 0.7000000000000001
+add_three_symbols(5, 6, 7)  # -> 18
+add_three_symbols("3", 5, 0)  # -> 8
+add_three_symbols(0.1, 0.2, 0.4)  # -> 0.7000000000000001
