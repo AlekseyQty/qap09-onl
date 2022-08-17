@@ -3,14 +3,14 @@
 # "I love arrays they are my favorite" => ["I", "love", "arrays", "they", "are", "my",
 # "favorite"]
 
-string1 = ("Robin Singh")
-print(string1)
-array1 = ["Robin", "Singh"]
-print(array1)
+string1 = "Robin Singh"
+result1 = string1.split()
+print("result1: ", result1)
 string2 = "I love arrays they are my favorite"
-print(string2)
-array2 = ["I", "love", "arrays", "they", "are", "my", "favorite"]
-print(array2)
+result2 = string2.split()
+print("result2: ", result2)
+
+
 
 # 2 Дан список: [‘Ivan’, ‘Ivanou’], и 2 строки: Minsk, Belarus
 # Напечатайте текст: “Привет, Ivan Ivanou! Добро пожаловать в Minsk Belarus”
