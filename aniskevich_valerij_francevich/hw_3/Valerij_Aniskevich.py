@@ -17,14 +17,10 @@ print(" ".join(final_name))
 my_string = str(input("vvedite text"))
 if my_string.startswith(" ") == True:
     new_string = my_string[1:]
-    if new_string.endswith(" ") == True:
-        final_string = new_string[0:-1]
-        print(final_string)
-    else:
-        print(new_string)
 else:
-    if my_string.endswith(" ") == True:
-        final_string = my_string[0:-1]
-        print(final_string)
-    else:
-        print(my_string)
+    new_string = my_string[::]
+if new_string.endswith(" ") == True:
+    final_string = new_string[0:-1]
+    print(final_string)
+else:
+    print(new_string)
