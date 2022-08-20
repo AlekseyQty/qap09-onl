@@ -1,5 +1,6 @@
 import time
 from functools import wraps
+import help_decorator
 
 # Напишите декоратор, который считает сколько времени работала декорируемая функция.
 # Для получения текущего времени можно использовать функцию time.time().
@@ -40,3 +41,59 @@ print("Name:", my_func_loop.__name__)
 
 print("My_func_gen:", my_func_gen())
 print("Name:", my_func_gen.__name__)
+
+
+# Напишите декоратор, который проверял бы тип параметров функции, конвертировал их если надо и складывал:
+# @typed(type=’str’)
+# def add_two_symbols(a, b):
+#     return a + b
+#
+# add_two_symbols("3", 5) -> "35"
+# add_two_symbols(5, 5) -> "55"
+# add_two_symbols('a', 'b') -> 'ab’
+#
+# @typed(type=’int’)
+# def add_three_symbols(a, b, с):
+#     return a + b + с
+#
+# add_three_symbols(5, 6, 7) -> 18
+# add_three_symbols("3", 5, 0) -> 8
+# add_three_symbols(0.1, 0.2, 0.4) -> 0.7000000000000001
+
+
+def typed(style):
+    def my_decorator(func_to_decorate):
+        @wraps(func_to_decorate)
+        def wrapper(*args):
+            my_args = []
+            for el in args:
+                if isinstance(el, float):
+                    my_args.append(el)
+                else:
+                    el = style(el)
+                    my_args.append(el)
+            func_to_decorate(*my_args)
+        return wrapper
+    return my_decorator
+
+
+@help_decorator.print_task_no("Type decorator")
+@typed(style=str)
+def add_two_symbols(a, b):
+    print(a + b)
+
+
+add_two_symbols("a", "b")
+add_two_symbols("3", 5)
+add_two_symbols(5, 5)
+
+
+@help_decorator.print_task_no("Type decorator")
+@typed(style=int)
+def add_three_symbols(a, b, c):
+    print(a + b + c)
+
+
+add_three_symbols(5, 6, 7)
+add_three_symbols("3", 5, 0)
+add_three_symbols(0.1, 0.2, 0.4)
