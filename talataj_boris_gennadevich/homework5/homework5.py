@@ -36,26 +36,28 @@ while i <= 100:
 #Ваша задача реализовать программу, против которой можно сыграть в "Быки и коровы"
 
 hidden_number = 3741
-proposal_number = input('Введите 4-х значное число:')
+while(True):
+   proposal_number = input('Введите 4-х значное число:')
 
-if hidden_number == proposal_number:
-    print('вы угадали')
+   if hidden_number == proposal_number:
+       print('вы угадали')
+       break
 
-count_cows = 0
-count_bulls = 0
+   count_cows = 0
+   count_bulls = 0
 
-list_number1 = list(map(int,str(hidden_number)))
-list_number2 = list(map(int,str(proposal_number)))
+   list_number1 = list(map(int,str(hidden_number)))
+   list_number2 = list(map(int,str(proposal_number)))
 
 
-for i in list_number1:
-    if list_number2.count(i) == 1:
-        count_cows = count_cows + 1
-        if list_number1.index(i) == list_number2.index(i):
-            count_bulls = count_bulls + 1
+   for i in list_number1:
+       if list_number2.count(i) == 1:
+           count_cows = count_cows + 1
+           if list_number1.index(i) == list_number2.index(i):
+               count_bulls = count_bulls + 1
 
-print('количство коров: ', count_cows)
-print('количество быков: ', count_bulls)
+   print('количство коров: ', count_cows)
+   print('количество быков: ', count_bulls)
 
 
 
