@@ -21,21 +21,18 @@ print(f'{"̅" * 26}{"̅" * 26}')
 >>> 3
 Частное: 3, Остаток: 3
 """
-calc_start = int(input('Выберите операцию:\n'
-                       '1. Сложение\n'
-                       '2. Вычитание\n'
-                       '3. Умножение\n'
-                       '4. Деление\n'
-                       'Введите номер пункта меню: '))
-
-if calc_start not in [1, 2, 3, 4]:
-    print('Такой операции не существует, приходите позже')
-    print(f'{"̅" * 26}{"̅" * 26}')
-    quit()
 
 
-def calculator(first_input, second_input):
+def calculator(calc_start):
     result = None
+
+    if calc_start not in [1, 2, 3, 4]:
+        print('Такой операции не существует, приходите позже')
+        quit()
+    else:
+        first_input = int(input('Введите первое число: '))
+        second_input = int(input('Введите второе число: '))
+
     if calc_start == 1:
         result = first_input + second_input
     elif calc_start == 2:
@@ -46,10 +43,16 @@ def calculator(first_input, second_input):
         if second_input == 0:
             result = '\nОшибка: на < 0 > делить нелья'
         else:
-            result = (f'\nЧастное : {int(first_input // second_input)}, Остаток: {int(first_input % second_input)}')
+            result = f'\nЧастное : {int(first_input // second_input)}, Остаток: {int(first_input % second_input)}'
 
-    return (f'Результат вашей операции: {result}')
+    return f'Результат вашей операции: {result}'
 
 
-print(calculator(int(input('Введите первое число: ')), int(input('Введите второе число: '))))
+print()
+print(calculator(int(input('Выберите операцию:\n'
+                           '1. Сложение\n'
+                           '2. Вычитание\n'
+                           '3. Умножение\n'
+                           '4. Деление\n'
+                           'Введите номер пункта меню: '))))
 print(f'{"̅" * 26}{"̅" * 26}')
