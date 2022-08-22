@@ -2,31 +2,26 @@
 # И проверяющей может ли такая карта существовать. Предусмотреть защиту от ввода букв, пустой строки и т.д.
 
 def luna(number_card):
-    unique = []
-    unique_1 = []
-    for i in range(len(number_card)):
-        if i % 2 == 0:
-            unique.append(number_card[i])
+    even_numbers = []
+    odd_numbers = []
+    for number in range(len(number_card)):
+        if number % 2 == 0:
+            odd_numbers.append(int(number_card[number]))
         else:
-            unique_1.append(int(number_card[i]))
-    #print(unique)
-    #print(unique_1)
-    unique_2 = []
-    for j in unique:
-        j = int(j)
-        f = j * 2
-        if f >= 10:
-            f = f - 9
-            unique_2.append(f)
+            even_numbers.append(int(number_card[number]))
+    list_multiplied_two = []
+    for odd_number in odd_numbers:
+        number_multiplied_two = odd_number * 2
+        if number_multiplied_two >= 10:
+            number_more_ten = number_multiplied_two - 9
+            list_multiplied_two.append(number_more_ten)
         else:
-            unique_2.append(f)
-    #print(unique_2)
-    summa = unique_1 + unique_2
-    #print(summa)
+            list_multiplied_two.append(number_multiplied_two)
+
+    summa = even_numbers + list_multiplied_two
     total = 0
     for sum in summa:
         total += sum
-    #print(total)
     if total % 10 == 0:
         return ("This is a valid card")
     else:
@@ -36,16 +31,16 @@ number_card = ""
 while number_card != "quit":
     number_card = input("Please enter your number card: ")
     def check(number_card):
-        for s in number_card:
-            if s.isalpha():
-                result_1 = 'You entered letters, please enter numbers'
-                return result_1
-            if s == " ":
-                result_2 = 'You entered a space, please enter numbers'
-                return result_2
+        for check_number in number_card:
+            if check_number.isalpha():
+                result_when_letter = 'You entered letters, please enter numbers'
+                return result_when_letter
+            if check_number == " ":
+                result_when_space = 'You entered a space, please enter numbers'
+                return result_when_space
             else:
-                result_3 = ''
-                return result_3
+                result_number = ''
+                return result_number
 
     print(check(number_card))
 
