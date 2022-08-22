@@ -39,7 +39,7 @@ hidden_number = 3741
 while(True):
    proposal_number = input('Введите 4-х значное число:')
 
-   if hidden_number == proposal_number:
+   if hidden_number == int(proposal_number):
        print('вы угадали')
        break
 
