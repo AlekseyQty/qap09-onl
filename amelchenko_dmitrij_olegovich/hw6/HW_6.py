@@ -42,6 +42,8 @@ def divi_num(x, y):
 
 while True:
     fun_num = input('////////////// \n1. Сложение \n2. Вычитание \n3. Умножение \n4. Деление \nВведите номер пункта меню: ')
+    x = input('Введите первое число: ')
+    y = input('Введите второе число: ')
 
     if fun_num == '':
         fun_num
@@ -50,33 +52,20 @@ while True:
         fun_num
 
     elif int(fun_num) == 1:
-        x = input('Введите первое число: ')
-        y = input('Введите второе число: ')
         sum_num(x, y)
         print(f'////////////// \nОтвет: {sum_num(x, y)}')
 
-
     elif int(fun_num) == 2:
-        x = input('Введите первое число: ')
-        y = input('Введите второе число: ')
         calc_num(x, y)
         print(f'////////////// \nОтвет: {calc_num(x, y)}')
 
-
     elif int(fun_num) == 3:
-        x = input('Введите первое число: ')
-        y = input('Введите второе число: ')
         multip_num(x, y)
         print(f'////////////// \nОтвет: {multip_num(x, y)}')
 
-
     elif int(fun_num) == 4:
-        x = input('Введите первое число: ')
-        y = input('Введите второе число: ')
-
         if float(y) == 0:
             print(f'////////////// \nДеление на 0 невозможно!')
-
 
         else:
             if float(y) != 0:
