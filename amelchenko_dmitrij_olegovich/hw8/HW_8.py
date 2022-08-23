@@ -11,18 +11,36 @@
 # add_three_symbols(5, 6, 7) -> 18
 # add_three_symbols("3", 5, 0) -> 8
 # add_three_symbols(0.1, 0.2, 0.4) -> 0.7000000000000001
-def decorator(func):
-    def typed(type:’str’):
-        typed = func(arg1, arg2)
+def typ(typ_e):
+    def decorator(funk):
+        def wrapper(*args):
+            all_arg = []
+            for arg in args:
+                if isinstance(arg, float):
+                    all_arg.append(arg)
+                else:
+                    arg = typ_e(arg)
+                    all_arg.append(arg)
+            funk(*all_arg)
+        return wrapper
+    return decorator
 
-    return typed
 
-@decorator(type:’str’)
-def print_full_name():
+@typ(typ_e=str)
+def add_two_symbols(a, b):
+    print(a + b)
 
+add_two_symbols("3", 5)
+add_two_symbols(5, 5)
+add_two_symbols('a', 'b')
 
-print_full_name("3", 5)
+@typ(typ_e = int)
+def add_three_symbols(a, b, с):
+    print(a + b + с)
 
+add_three_symbols(5, 6, 7)
+add_three_symbols("3", 5, 0)
+add_three_symbols(0.1, 0.2, 0.4)
 
 
 #2. Расчет времени работы функции
