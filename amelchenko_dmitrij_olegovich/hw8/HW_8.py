@@ -1,4 +1,31 @@
-#2 Расчет времени работы функции
+#1. Декоратор типов
+# @typed(type=’str’)
+# def add_two_symbols(a, b):
+# return a + b
+# add_two_symbols("3", 5) -> "35"
+# add_two_symbols(5, 5) -> "55"
+# add_two_symbols('a', 'b') -> 'ab’
+# @typed(type=’int’)
+# def add_three_symbols(a, b, с):
+# return a + b + с
+# add_three_symbols(5, 6, 7) -> 18
+# add_three_symbols("3", 5, 0) -> 8
+# add_three_symbols(0.1, 0.2, 0.4) -> 0.7000000000000001
+def decorator(func):
+    def typed(type:’str’):
+        typed = func(arg1, arg2)
+
+    return typed
+
+@decorator(type:’str’)
+def print_full_name():
+
+
+print_full_name("3", 5)
+
+
+
+#2. Расчет времени работы функции
 import time
 
 def my_fun_time(fun):
