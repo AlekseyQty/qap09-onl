@@ -1,11 +1,12 @@
 # Напишите генератор который принимает список numbers = [34.6, -203.4, 44.9, 68.3, -12.2, 44.6, 12.7] и возвращает
 # новый список только с положительными числами
 
-numbers = [34.6, -203.4, 44.9, 68.3, -12.2, 44.6, 12.7]
-positive_numbers = []
+def positive_generator(*args):
+    for number in args:
+        if number > 0:
+            yield number
 
-for i in numbers:
-    if i > 0:
-        positive_numbers.append(i)
 
-print(positive_numbers)
+positive_numbers = positive_generator(34.6, -203.4, 44.9, 68.3, -12.2, 44.6, 12.7)
+for positive_number in positive_numbers:
+    print(positive_number)
