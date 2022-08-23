@@ -74,19 +74,22 @@ def play_2():
             break
 
     while True:
+        cop_player_1 = player_1.copy()
+        cop_player_2 = player_2.copy()
+
         for i in range(4):
-            if player_2[i] == player_1[i]:
+            if cop_player_2[i] == cop_player_1[i]:
                 bull += 1
-                player_1[i] = '-'
-                player_2[i] = '+'
+                cop_player_1[i] = '-'
+                cop_player_2[i] = '+'
                 continue
 
         for i in range(4):
-            n = player_2[i]
+            n = cop_player_2[i]
             for j in range(4):
-                if n == player_1[j]:
+                if n == cop_player_1[j]:
                     cow += 1
-                    player_1[j] = '+'
+                    cop_player_1[j] = '+'
                     continue
 
         if bull != 4:
@@ -97,7 +100,7 @@ def play_2():
             if bull == 4:
                 print(f'Вы выиграли!!! \n'
                       f'Быки: {str(bull)} из 4')
-                break
+        break
 
 
 play_2()
