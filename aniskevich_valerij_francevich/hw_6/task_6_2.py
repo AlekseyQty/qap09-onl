@@ -5,27 +5,31 @@
 # "abeehhhhhccced" == "abe2h5c3ed"
 # "aaabbceedd" == "a3b2ce2d2"
 # "abcde" == "abcde"
-def function(a):
+# "aaabbdefffff" == "a3b2def5"
+
+def function(my_string):
     my_list = []
     new_list = []
-    for i in a:
+    for i in my_string:
         my_list.append(i)
-    print(my_list)
-    for i in range((len(my_list) - 1)):
+    for el in range(len(my_list)):
         sum = 1
-        if my_list[i - 1] == my_list[i]:
+        if el > 0 and my_list[el] == my_list[el - 1]:
             continue
-        for a in range((i + 1), len(my_list)):
-            if my_list[i] == my_list[a]:
+        else:
+            new_list.append(my_list[el])
+        for i in range(el, (len(my_list) - 1)):
+            if my_list[i] == my_list[i + 1]:
                 sum += 1
+                if sum > 1 and i == (len(my_list) - 2):
+                    new_list.append(str(sum))
+                continue
             else:
-                new_list.append(my_list[i])
                 if sum > 1:
                     new_list.append(str(sum))
                 break
     return print(''.join(new_list))
 
 
-# a = str(input("Введите слово "))
-a = "abeehhhhhccced"
+a = str(input("Введите текст "))
 function(a)
