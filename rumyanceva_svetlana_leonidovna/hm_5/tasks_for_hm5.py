@@ -51,7 +51,12 @@ print("--------task3_start--------")
 # Ваша задача реализовать программу, против которой можно сыграть в "Быки и коровы".
 
 
-def verify_unique_number(num):
+def user_input():
+    num = input("Enter estimated four-digit integer number with unique digits: ")
+    return num
+
+
+def generate_unique_number(num):
     while True:
         if len(set(list(num))) != 4:
             num = str(randint(1023, 9876))
@@ -59,54 +64,48 @@ def verify_unique_number(num):
             return num
 
 
-def verify_integer_number(num):
+def is_integer_number(num):
     while True:
         try:
             num = int(num)
         except ValueError:
-            print("You have entered no integer number. Try again. (Quit from the game: Ctrl+C) ")
-            num = input("Enter any four-digit integer number with unique digits: ")
+            print("You have entered no integer number. Try again. (Quit from the game: Ctrl+C)")
+            num = user_input()
         else:
             return str(num)
 
 
-def verify_unique_4digit_number(num):
+def is_4digit_number(num):
     while True:
-        if num[0] == "-":
+        if num[0] == "-":  # ignore "-": -1563=1563
             num = num.replace("-", "")
-        if len(num) != 4:
-            print("You have entered no four-digit number. Try again. (Quit from the game: Ctrl+C) ")
-            num = input("Enter any four-digit integer number with unique digits: ")
-            num = verify_integer_number(num)
-        elif len(set(list(num))) != 4:
-            print("Entered number has the same digits. Try again. (Quit from the game: Ctrl+C)")
-            num = input("Enter any four-digit integer number with unique digits: ")
-            num = verify_integer_number(num)
+        if len(set(list(num))) != 4:
+            print("Try again. (Quit from the game: Ctrl+C)")
+            num = is_integer_number(user_input())
         else:
             return num
 
 
-hidden_number = str(randint(1023, 9876))
-new_hidden_number = verify_unique_number(hidden_number)
-print(new_hidden_number, type(new_hidden_number))
-estimated_number = input("Enter guessed four-digit integer number with unique digits: ")
-new_estimated_number = verify_unique_4digit_number(verify_integer_number(estimated_number))
+hidden_number = generate_unique_number(str(randint(1023, 9876)))
+print(hidden_number, type(hidden_number))
+
+estimated_number = is_4digit_number(is_integer_number(user_input()))
 
 while True:
     bulls_counter, cows_counter = 0, 0
     position_list, position_bulls, position_cows = [], [], []
-    print(new_hidden_number, new_estimated_number)
+    print(hidden_number, estimated_number)
     for i in range(4):
-        if new_estimated_number[i] == new_hidden_number[i]:
+        if estimated_number[i] == hidden_number[i]:
             bulls_counter += 1
-        elif new_estimated_number[i] in new_hidden_number:
+        elif estimated_number[i] in hidden_number:
             cows_counter += 1
 
     if bulls_counter != 4:
         print(f"bulls = {bulls_counter}")
         print(f"cows = {cows_counter}")
-        estimated_number = input("Try again. Enter guessed four-digit integer number with unique digits: ")
-        new_estimated_number = verify_unique_4digit_number(verify_integer_number(estimated_number))
+        print("Try again.")
+        estimated_number = is_4digit_number(is_integer_number(user_input()))
     else:
         print("You have won!!!!")
         break
