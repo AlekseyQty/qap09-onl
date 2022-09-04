@@ -52,3 +52,25 @@ book_2 = Book('Picture of Dorian Gray', 'Oscar Wilde', 320, 9785179829188, False
 user_1.reserve_book(book_2)
 user_2.take_book(book_1)
 user_1.take_book(book_1)
+
+#2.Банковский вклад
+
+class Investment:
+    def __init__(self, money, year, percent):
+        self.money = money
+        self.year = year
+        self.percent = percent
+
+class Bank:
+
+    @staticmethod
+    def deposit(invest):
+        total = invest.money * (1 + invest.percent / 100 / 12) ** (invest.year * 12)
+        return f'Your {invest.money} deposit' \
+               f'afret {invest.year} years of investment' \
+               f'at {invest.percent}% per month: <{total}>'
+
+
+investor = Investment(5000, 10, 10)
+bank = Bank()
+print(bank.deposit(investor))
