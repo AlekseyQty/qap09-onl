@@ -1,30 +1,30 @@
 def typed(type):
     def decorator(func):
-        def wrapper(elements):
+        def wrapper(*args):
             if type == 'str':
-                sum_symbols = ''
-                for elem in func(elements):
-                    sum_symbols += str(elem)
-                print(sum_symbols)
-            if type == 'int':
-                sum_symbols = 0
-                for elem in func(elements):
-                    sum_symbols += int(elem)
-                print(sum_symbols)
-            if type == 'float':
-                sum_symbols = 0
-                for elem in func(elements):
-                    sum_symbols += float(elem)
-                print(sum_symbols)
+                new_args = tuple(map(str, args))
+                print(func(*new_args))
+            elif type == 'int':
+                new_args = tuple(map(int, args))
+                print(func(*new_args))
 
+            elif type == 'float':
+                new_args = tuple(map(float, args))
+                print(func(*new_args))
         return wrapper
     return decorator
 
 
+@typed(type='int')
+def add_two_symbols(a, b):
+    return a + b
+
+
 @typed(type='str')
-def add_symbols(elements):
-    return elements
+def add_three_symbols(a, b, c):
+    return a + b + c
 
 
-add_symbols(["5", '4', 4, 0.1])
-add_symbols(['40', 5, 6, 0.01])
+add_two_symbols(5, 6)
+add_two_symbols('4', '3')
+add_three_symbols('4', 5, 10.3)
