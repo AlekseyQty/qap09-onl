@@ -16,8 +16,9 @@ text_encrypt = input('Enter your text to encrypt: ').lower()
 text_decrypt = input('Enter your text to decrypt: ').lower()
 key_crypt = int(input('Enter your crypt key: '))
 
+
 # Encode only for Latin alphabet
-def encode(text_encrypt,key_crypt):
+def encode(text_encrypt, key_crypt):
     result = []
     key_dict = ''
     dictionary = 'abcdefghijklmnopqrstuvwxyz'
@@ -29,16 +30,15 @@ def encode(text_encrypt,key_crypt):
 
         if text_encrypt[letter] in key_dict:
             for symbol in range(len(key_dict)):
-                if 0 <= symbol + key_crypt < len(key_dict) and text_encrypt[letter] == key_dict[symbol]:
-                    result.append(key_dict[symbol + key_crypt])
-                elif symbol + key_crypt > len(key_dict) and text_encrypt[letter] == key_dict[symbol]:
-                    result.append(key_dict[(1 - symbol - key_crypt) % len(key_dict)-1])
-                elif symbol + key_crypt < 0 and text_encrypt[letter] == key_dict[symbol]:
-                    result.append(key_dict[(symbol + key_crypt) % len(key_dict)])
+                if (symbol + key_crypt) < len(key_dict) and text_encrypt[letter] == key_dict[symbol]:
+                    result.append(key_dict[(symbol + key_crypt)])
+                elif (symbol + key_crypt) >= len(key_dict) and text_encrypt[letter] == key_dict[symbol]:
+                    result.append(key_dict[symbol - len(key_dict) + key_crypt])
     return ''.join(result)
 
+
 # Decode only for Latin alphabet
-def decode(text_decrypt,key_crypt):
+def decode(text_decrypt, key_crypt):
     result = []
     key_dict = ''
     dictionary = 'abcdefghijklmnopqrstuvwxyz'
@@ -50,12 +50,11 @@ def decode(text_decrypt,key_crypt):
 
         if text_decrypt[letter] in key_dict:
             for symbol in range(len(key_dict)):
-                if 0 <= symbol - key_crypt < len(key_dict) and text_decrypt[letter] == key_dict[symbol]:
-                    result.append(key_dict[symbol - key_crypt])
-                elif symbol - key_crypt < len(key_dict) and text_decrypt[letter] == key_dict[symbol]:
-                    result.append(key_dict[(1 + symbol + key_crypt) % len(key_dict) + 1])
-                elif symbol - key_crypt < 0 and text_decrypt[letter] == key_dict[symbol]:
-                    result.append(key_dict[(symbol - key_crypt) % len(key_dict)])
+                if (symbol - key_crypt) < len(key_dict) and text_decrypt[letter] == key_dict[symbol]:
+                    result.append(key_dict[(symbol - key_crypt)])
+                elif (symbol - key_crypt) >= len(key_dict) and text_decrypt[letter] == key_dict[symbol]:
+                    result.append(key_dict[symbol - len(key_dict) - key_crypt])
+
     return ''.join(result)
 
 
