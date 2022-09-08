@@ -50,7 +50,7 @@ print(("-") * 25 + "Сaesar_Сipher" + ("-") * 25)
 
 while True:
     print("Enter 0 to stop the program")
-    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    alphabet = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz"
     my_text = input("Enter you text for coding: ")
     if my_text == "0":
         break
@@ -66,3 +66,35 @@ while True:
             encode_text += letter
 
     print("Сaesar_Сipher:", encode_text)
+
+
+# Напишите функцию, которая принимает на вход одномерный массив и два числа - размеры выходной матрицы.
+# На выход программа должна подавать матрицу нужного размера, сконструированную из элементов массива.
+# reshape([1, 2, 3, 4, 5, 6], 2, 3) =>
+# [
+#     [1, 2, 3],
+#     [4, 5, 6]
+# ]
+# reshape([1, 2, 3, 4, 5, 6, 7, 8,], 4, 2) =>
+# [
+#     [1, 2],
+#     [3, 4],
+#     [5, 6],
+#     [7, 8]
+# ]
+
+print(("-")*25 + "Arrays" + ("-")*25)
+
+
+def reshape(my_array, my_line, column):
+    new_array = []
+    for line in range(my_line):
+        temporary_array = []
+        for i in range(column):
+            temporary_array.append(my_array[i + column*line])
+        new_array.append(temporary_array)
+    return new_array
+
+
+print(reshape([1, 2, 3, 4, 5, 6], 2, 3))
+print(reshape([1, 2, 3, 4, 5, 6, 7, 8], 4, 2))
