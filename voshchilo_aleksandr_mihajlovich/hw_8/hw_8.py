@@ -1,24 +1,26 @@
 import time
+
 # 1. Напишите декоратор, который проверял бы тип параметров функции, конвертировал их если надо и складывал:
 
 
-def decorator_type_str(funk):
-    def wrapper(arg1, arg2):
-        if type(arg1) == str:
-            str_arg1 = arg1
-        else:
-            str_arg1 = str(arg1)
-        if type(arg2) == str:
-            str_arg2 = arg2
-        else:
-            str_arg2 = str(arg2)
-        print(str_arg1 + str_arg2)
-    return wrapper
+def typed(typo):
+    def decorator(funk):
+        def wrapper(*args):
+            list_args = []
+            for arg in args:
+                if isinstance(arg, float):
+                    list_args.append(arg)
+                else:
+                    arg = typo(arg)
+                    list_args.append(arg)
+            funk(*list_args)
+        return wrapper
+    return decorator
 
 
-@decorator_type_str
+@typed(typo=str)
 def some_funk_1(a, b):
-    return a, b
+    print(a + b)
 
 
 some_funk_1("3", 5)
@@ -26,29 +28,16 @@ some_funk_1(5, 5)
 some_funk_1("a", "b")
 
 
-def decorator_type_int(funk):
-    def wrapper(*args):
-        list_args = [i for i in args]
-        numb = 0
-        for i in list_args:
-            if type(i) == int:
-                numb += i
-            elif type(i) == float:
-                numb += i
-            else:
-                numb += int(i)
-        print(numb)
-    return wrapper
+@typed(typo=int)
+def some_funk_2(a, b, c):
+    print(a + b + c)
 
-
-@decorator_type_int
-def some_funk_2(*args):
-    return args
 
 
 some_funk_2(5, 6, 7)
 some_funk_2("3", 5, 0)
 some_funk_2(0.1, 0.2, 0.4)
+
 
 # 2. Расчет времени работы функции
 
