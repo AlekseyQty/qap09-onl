@@ -16,7 +16,6 @@ class Reader:
         self.book = book
 
     def take_book(self, the_book):
-        self.the_book = the_book
         if the_book.reserved is True:
             print(f"{the_book.name} is unavailable!")
         else:
@@ -25,7 +24,6 @@ class Reader:
             print(f"{the_book.name} is added to {self.name}")
 
     def return_book(self, the_book):
-        self.the_book = the_book
         if self.book == the_book:
             the_book.reserved = False
             self.book = None
@@ -34,7 +32,6 @@ class Reader:
             print("It's nothing to return!")
 
     def reserve_book(self, the_book):
-        self.the_book = the_book
         if the_book.reserved is False:
             the_book.reserved = True
             self.book = the_book
