@@ -1,55 +1,43 @@
-class Methods():
-    a = 0
-    b = 0
-
-    def __init__(self):
-        self.a = float(input("Введите первое число:"))
-        self.b = float(input("Введите второе число:"))
-        Methods.a = self.a
-        Methods.b = self.b
+from abc import ABC, abstractmethod
 
 
-class Addition(Methods):
+class Methods(ABC):
 
-    def __init__(self):
-        super().__init__()
-        a = Methods.a
-        b = Methods.b
+    @abstractmethod
+    def addition(self, a, b):
+        raise NotImplemented
+
+    @abstractmethod
+    def subtraction(self, a, b):
+        raise NotImplemented
+
+    @abstractmethod
+    def multiplication(self, a, b):
+        raise NotImplemented
+
+    @abstractmethod
+    def division(self, a, b):
+        raise NotImplemented
+
+
+class Math_functions(Methods):
+
+    def addition(self, a, b):
         sum_ab = a + b
-        print(sum_ab)
+        print(f"Результат: {sum_ab}")
 
-
-class Subtraction(Methods):
-
-    def __init__(self):
-        super().__init__()
-        a = Methods.a
-        b = Methods.b
+    def subtraction(self, a, b):
         sub_ab = a - b
-        print(sub_ab)
+        print(f"Результат: {sub_ab}")
 
-
-class Multiplication(Methods):
-
-    def __init__(self):
-        super().__init__()
-        a = Methods.a
-        b = Methods.b
+    def multiplication(self, a, b):
         mult_ab = a * b
-        print(mult_ab)
+        print(f"Результат: {mult_ab}")
 
-
-class Division(Methods):
-
-    def __init__(self):
-        super().__init__()
-        a = Methods.a
-        b = Methods.b
+    def division(self, a, b):
         try:
             div_ab = a / b
         except ZeroDivisionError:
             print("Division by zero!!!")
         else:
-            print(div_ab)
-
-
+            print(f"Результат: {div_ab}")

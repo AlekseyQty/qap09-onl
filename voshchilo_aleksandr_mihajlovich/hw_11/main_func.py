@@ -1,13 +1,20 @@
 import func
 
 print("1. Сложение \n2. Вычитание \n3. Умножение \n4. Деление \n")
-operation_input = int(input("Выберите операцию (номер):"))
+operation_input = int(input("Выберите операцию (номер): "))
+
+a = float(input("Введите первое число: "))
+b = float(input("Введите второе число: "))
 
 if operation_input == 1:
-    func.Addition()
+    addition_func = func.Math_functions()
+    addition_func.addition(a, b)
 elif operation_input == 2:
-    func.Subtraction()
+    subtraction_func = func.Math_functions()
+    subtraction_func.subtraction(a, b)
 elif operation_input == 3:
-    func.Multiplication()
+    multiplication_func = func.Math_functions()
+    multiplication_func.multiplication(a, b)
 elif operation_input == 4:
-    func.Division()
+    division_func = func.Math_functions()
+    division_func.division(a, b)
