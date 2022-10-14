@@ -6,20 +6,21 @@
 
 class Book:
 
-    def __init__(self, reserded=False):
-        self.name_book = "Motivation"
-        self.author = "Brain Tracy"
-        self.pages = 144
-        self.isbn = 9785000571002
+    def __init__(self, name_book, author, pages, isbn, reserded=False):
+        self.name_book = name_book
+        self.author = author
+        self.pages = pages
+        self.isbn = isbn
         self.reserved = reserded
 
 
 class User:
+    def __init__(self, name_user, book=None):
+        self.name_user = name_user
+        self.book = book
+
     def take(self, book):
         if book.reserved == False:
-            name_user = input("Введите своё имя \n")
-            self.name_user = name_user
-            self.book = book
             book.reserved = True
             print(f"{self.name_user}, книга '{book.name_book}' взята успешно!")
         else:
@@ -30,10 +31,10 @@ class User:
         print(f"Книга '{book.name_book}' возвращена! Спасибо!")
 
 
-
-motivation = Book()
-user = User()
-user.take(motivation)
-user.to_return(motivation)
-user2 = User()
-user2.take(motivation)
+motivation = Book("Motivation", "Brain Tracy", "144", "9785000571002")
+negotiation = Book("Negotiation", "Brain Tracy", "144", "9785000571026")
+valera = User("Valera")
+valera.take(motivation)
+valera.to_return(motivation)
+andrei = User("Andrei")
+andrei.take(motivation)
